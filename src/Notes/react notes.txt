@@ -1,0 +1,214 @@
+🌐  What is CDN? Why do we use it?
+
+🔸 A content delivery network (CDN) refers to a geographically distributed group of servers that work together to provide fast delivery of Internet content. The main use of a CDN is to deliver content through a network of servers in a secure and efficient way. 
+
+🌐 What is crossorigin in script tag?
+
+🔸 The crossorigin attribute sets the mode of the request to an HTTP CORS Request. The purpose of crossorigin attribute is used to share the resources from one domain to another domain. Basically, it is used to handle the CORS request. that checks whether it is safe to allow for sharing the resources from other domains.
+
+   Syntax
+  <script crossorigin="anonymous|use-credentials">
+
+🌐 What is difference between React and ReactDOM?
+
+🔸React is a JavaScript library for building User Interfaces whereas ReactDOM is also JavaScript library that allows React to interact with the DOM. The react package contains React.createElement(), React.Component, React.Children, and other helpers related to elements and component classes. You can think of these as the isomorphic or universal helpers that you need to build components. The react-dom package contains ReactDOM.render(), and in react-dom/server we have server-side rendering support with ReactDOMServer.renderToString() and ReactDOMServer.renderToStaticMarkup().
+
+
+🌐
+
+🔸
+
+🌐
+
+🔸
+
+
+
+🌐Creating and nesting components :
+
+🔸 React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+
+🔸 React components are JavaScript functions that return markup:
+
+function MyButton() {
+  return (
+    <button>I'm a button</button>
+  );
+}
+
+🌐 jsx : Displaying data :
+
+🔸JSX lets you put markup into JavaScript. Curly braces let you “escape back” into JavaScript so that you can embed some variable from your code and display it to the user.
+
+return (
+  <h1>
+    {user.name}
+  </h1>
+); 
+
+🌐 Conditional rendering :
+
+🔸In React, there is no special syntax for writing conditions. Instead, you’ll use the same techniques as you use when writing regular JavaScript code. For example, you can use an if statement to conditionally include JSX:
+
+let content;
+if (isLoggedIn) {
+  content = <AdminPanel />;
+} else {
+  content = <LoginForm />;
+}
+return (
+  <div>
+    {content}
+  </div>
+);
+
+or----
+
+<div>
+  {isLoggedIn ? (
+    <AdminPanel />
+  ) : (
+    <LoginForm />
+  )}
+</div>
+
+🌐 key :
+
+const listItems = products.map(product =>
+  <li key={product.id}>
+    {product.title}
+  </li>
+);
+
+return (
+  <ul>{listItems}</ul>
+);
+
+🔸 Notice how <li> has a key attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
+
+🌐 Updating the screen :
+
+🔸 Often, you’ll want your component to “remember” some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add state to your component.
+
+🪝import { useState } from 'react';
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton />
+      <MyButton />
+    </div>
+  );
+}
+
+function MyButton() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+
+Counters that update separately
+Clicked 10 times
+Clicked 9 times
+
+If you render the same component multiple times, each will get its own state. Click each button separately:
+
+ 🌐 Hooks :
+
+🔸Functions starting with use are called Hooks Hooks are more restrictive than other functions. You can only call Hooks at the top of your components (or other Hooks).You can also write your own Hooks by combining the existing ones.
+
+
+🎯useEffect:
+🔸The useEffect hook in React is used to handle the side effects such as fetching data and updating DOM.
+🔸useEffect hook runs on every render by which we can control the side effect of rendering
+
+note: if no dependency Array useEffect is called on every time 
+	useEffect(()=>{})
+
+note: if the dependency Array is empty []=> useEffect is called on initial 	render (just once)
+		useEffect(()=>{},[])
+
+note:if the dependency Array is [btnNameReact] => useEffect is called on 	everytime btnNameReact is updated. 
+			useEffect(()=>{},[btnNameReact])
+		
+
+
+🌐Types of Routing : There are two types of Routing -
+
+🔸Client Side Routing : In this when the user navigates to a new page, the current page is preserved and the new page is rendered by manipulating the DOM of the page.
+🔸Server Side Routing : In this when the user navigates to a new page, the old page is completely discarded and the HTML of the new page is loaded.
+
+🌐 Client Side Routing (CSR) :
+
+🔸 A plain HTML document can link to other documents and the browser handles the history stack itself. Client Side Routing enables developers to manipulate the browser history stack 	without making a document request to the server.
+
+
+🌐Difference Between Link tag and Anchor Tag : 
+
+In React while navigating from one route to another route we use Link tag instead of Anchor tag because:
+🔸Anchor tag reloads the whole page when navigating from one route to another.
+🔸So, react-router-dom gives us the Link component to navigate without reloading the whole page
+
+🌐Single Page Applications(SAP):
+A Single Page Application is a web application that loads a page single time and dynamically updates that page i.e Interchange the component as the user interacts with the app.
+
+🌐In a case where we want to navigate to another page without changing the header component from its place we can use Children Routes in that condition
+
+
+🎯 fetch() :
+🔸fetch() method is used to request data from a server.
+🔸The fetch() method requires one parameter, the URL to request, and returns a promise.
+
+🎯Shimmer UI :
+ A shimmer UI is a version of the UI that doesn’t contain actual content, but instead it mimics the layout of the content that will eventually appear in the UI.
+
+🎯 Ways to fetch data Dynamically:
+🔸 PageLoads->Fetch->Render
+🔸PageLoads->Render->Fetch->Render
+
+
+🎯Conditional Rendering:
+🔸Conditional Rendering refers to rendering components based on the given conditions.
+🔸Suppose we are Creating a Shimmer UI then in that condition Conditional Rendering is used.
+
+
+
+🌐 single responsibility principal
+
+🔸 The Single Responsibility Principle (SRP) is a fundamental concept in software engineering, particularly in object-oriented design. It states that a class should have only one reason          to change, meaning it should have only one responsibility.
+
+🔸In simpler terms, the SRP advocates for a clear and focused purpose for each class, module, or component in a software system. This helps in several ways:
+
+🔸Maintainability: When each class has a single responsibility, it's easier to understand and maintain the code. Changes to one aspect of the system are less likely to affect unrelated parts.
+
+🔸Testability: Classes with single responsibilities tend to be more modular and easier to test. Unit tests can focus on specific behaviors without needing to cover unrelated functionality.
+
+🔸Reusability: Well-defined responsibilities make it easier to reuse components in other parts of the system or even in different projects. This promotes code modularity and reduces duplication.
+
+🔸Scalability: As the system grows, adhering to the SRP makes it easier to scale and evolve. New features or changes can be implemented without causing ripple effects throughout the codebase.
+
+🔸Collaboration: Clear responsibilities make it easier for multiple developers to work on the same codebase without stepping on each other's toes. Each class or module becomes a coherent unit that can be understood and modified independently.
+
+🌐 Custom Hooks: Sharing logic between components :
+
+🔸Imagine you’re developing an app that heavily relies on the network (as most apps do). You want to warn the user if their network connection has accidentally gone off while they were using your app. How would you go about it? It seems like you’ll need two things in your component:
+
+	🔸 A piece of state that tracks whether the network is online.
+	🔸 An Effect that subscribes to the global online and offline events, and updates that state.
+
+
+
+
+
+
+
+
